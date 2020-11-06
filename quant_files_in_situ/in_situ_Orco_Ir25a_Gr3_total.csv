@@ -1,0 +1,8 @@
+genotype,Segment_1,Segment_2,Segment_3,Segment_4,Segment_5
+Orco,40,32,36,42,41
+Ir25a,61,48,53,65,59
+Gr3,21,16,17,23,18
+Orco_Ir25a,40,32,36,42,41
+Ir25a_Gr3,21,16,17,23,18
+Orco_Gr3,0,0,0,0,0
+All,0,0,0,0,0

@@ -1,0 +1,9 @@
+genotype,Segment_1,Segment_2,Segment_3,Segment_4
+Orco_only,14,20,15,22
+Ir25a_only,12,11,17,14
+Ir76b_only,0,0,0,0
+Orco_Ir25a,8,15,18,7
+Orco_Ir76b,0,0,0,0
+Ir25a_Ir76b,11,13,9,10
+All,2,4,1,1
+
