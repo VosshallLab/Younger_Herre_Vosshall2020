@@ -1,0 +1,448 @@
+---
+title: "Antenna and palp in situ quantification"
+author: "Margo Herre"
+output:
+  pdf_document:
+    latex_engine: xelatex
+  html_document:
+    df_print: paged
+mainfont: Arial
+geometry: margin=.2cm
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_knit$set(root.dir = "/path/to/root/dir/")
+
+```
+
+```{r libraries, echo = TRUE, warning = FALSE, message = FALSE}
+library("data.table")
+library("reshape2")
+library("ggthemes")
+library("plyr")
+library("ggplot2")
+library("ggpubr")
+library("rcompanion")
+library("knitr")
+library("kableExtra")
+library("eulerr")
+```
+
+**Set working directory, input files**
+
+```{r inputandmelt, echo = FALSE}
+
+setwd('/path/to/quant_files_in_situ/')
+
+#input csv files
+all_quant_insitu <- list.files('/path/to/quant_files_in_situ/',
+                    pattern = '.csv', full.names = F)
+
+#convert csv files to a data frame, use sapply USE.NAMES to maintain file names in list
+all_quant_insitu_df <- sapply(all_quant_insitu, read.csv, simplify = FALSE, USE.NAMES = TRUE)
+
+#melt quantificaiton data for ggplot 
+melted <- lapply(all_quant_insitu_df, function(x) melt(x, id.vars = 'genotype'))
+
+```
+
+**Define plotting order**
+
+```{r defineplotorder, echo=FALSE}
+melted$in_situ_ant_Orco_Ir25a_Ir75b_exclusive.csv$genotype <- factor(melted$in_situ_ant_Orco_Ir25a_Ir75b_exclusive.csv$genotype,
+                                                        c("Orco_only", "Ir25a_only", "Ir76b_only",
+                                                          "Orco_Ir25a", "Orco_Ir76b", "Ir25a_Ir76b", "All"))
+
+melted$in_situ_Orco_Or8_Ir76b_total.csv$genotype <- factor(melted$in_situ_Orco_Or8_Ir76b_total.csv$genotype,
+  c("Orco_only", "Ir76b_only", "Or8_only", "Orco_Ir76b", "Orco_Or8","Ir76b_Or8", "All"))
+
+melted$in_situ_Orco_Or8_Or49_total.csv$genotype <- factor(melted$in_situ_Orco_Or8_Or49_total.csv$genotype,
+  c("Orco", "Or8", "Or49", "Orco_Or8", "Orco_Or49", "Or8_Or49", "All"))
+
+melted$in_situ_Orco_Or49_Ir100a_total.csv$genotype <- factor(melted$in_situ_Orco_Or49_Ir100a_total.csv$genotype,
+  c("Orco", "Or49", "Ir100a", "Orco_Or49", "Orco_Ir100a", "Or49_Ir100a", "All"))
+
+melted$in_situ_Orco_Or49_Ir93a_total.csv$genotype <- factor(melted$in_situ_Orco_Or49_Ir93a_total.csv$genotype,
+   c("Orco", "Or49", "Ir93a", "Orco_Or49", "Orco_Ir93aa", "Or49_Ir93aa", "All"))
+
+melted$in_situ_Orco_Ir25a_Gr3_total.csv$genotype <- factor(melted$in_situ_Orco_Ir25a_Gr3_total.csv$genotype,
+    c("Orco", "Ir25a", "Gr3", "Orco_Ir25a", "Ir25a_Gr3", "Orco_Gr3", "All"))
+
+melted$in_situ_Orco_Gr3_Ir75g_total.csv$genotype <- factor(melted$in_situ_Orco_Gr3_Ir75g_total.csv$genotype,
+    c("Orco", "Gr3", "Ir75g", "Orco_Gr3", "Gr3_Ir75g", "Orco_Ir75g", "All"))
+
+melted$in_situ_ant_total_Orco_Ir25a_Ir76b.csv$genotype <- factor(melted$in_situ_ant_total_Orco_Ir25a_Ir76b.csv$genotype, c("Orco", "Ir25a", "Ir76b"))
+
+```
+
+**Antenna in situ cell counts**
+
+```{r Orco_Ir25a_Ir76b_antenna_in_situ, echo = FALSE, fig.height=4, fig.width=4.5}
+
+newlabs_in_situ <- c("Orco only", "Ir25a only", "Ir76b_only", "Orco_Ir25a", "Orco_Ir76b", 
+               "Ir25a_Ir76b", "All")
+ggplot(melted$in_situ_ant_Orco_Ir25a_Ir75b_exclusive.csv, aes(x=genotype, y=(value))) +
+  geom_violin(aes(color = genotype, fill = genotype),
+              alpha = 0.2, 
+              width = 0.6,
+              scale = "width") +
+  geom_point(aes(color = genotype, shape = genotype, fill = genotype),
+             alpha = 1,
+             size = 1.5,
+             stroke = 1,
+             position = position_jitter(width = 0.1, height=0)) +
+  scale_shape_manual(values = c(21,21,21,21,21,21,21,21,21)) +
+  scale_color_manual(values = c("gray63", "deeppink2", "chartreuse4",
+                                "gray63", "gray63", "chartreuse4",
+                                "turquoise2")) +
+  scale_fill_manual(values = c("gray63", "deeppink2", "chartreuse4",
+                                "gray63", "gray63", "chartreuse4",
+                                "turquoise2")) +
+  scale_x_discrete(labels = newlabs_in_situ) +
+  stat_summary(fun=mean, 
+               fun.min=mean, 
+               fun.max=mean, 
+               geom="crossbar", 
+               width=0.4,
+               size=.3) +
+  ylim(-1,25)+
+  ggtitle("in situ Orco, Ir25a, Ir76b") +
+  xlab("genotype") + ylab("cells per slice") + theme_classic() +
+  theme(plot.title = element_text(size = 10, hjust = 0.5)) +
+  theme(axis.text.x = element_text(angle = 45, hjust =1)) +
+  theme(legend.position = "none")
+
+```
+
+**Antenna in situ Euler plot**
+
+```{r antenna_in_situ_euler, echo = FALSE, fig.width = 4, fig.height = 2}
+
+ant_Orco_Ir25a_Ir76b <- euler(c("Orco" = 17.75,
+                       "Ir25a" = 13.5,
+                       "Ir76b" = 0,
+                       "Orco&Ir25a" = 12,
+                       "Orco&Ir76b" = 0,
+                       "Ir25a&Ir76b" = 10.75,
+                       "Orco&Ir25a&Ir76b" = 2,
+                       "1_cell" = 1,
+                       "5_cells" = 5),
+                       quantities = TRUE)
+
+plot(ant_Orco_Ir25a_Ir76b)
+
+```
+
+**Antenna in situ stacked bar plot**
+
+```{r stackbarplot_in_situ, echo = FALSE, fig.height = 4, fig.width = 3}
+
+means.Ir25a <- ddply(melted$in_situ_ant_percent_Ir25a_Orco.csv, c("genotype"), summarise,
+                   mean=mean(value), sem=sd(value)/sqrt(length(value)))
+means.Ir25a$variable <- c("Ir25a", "Ir25a", "Ir25a")
+means.Ir25a <- means.Ir25a[,c("variable","genotype","mean","sem")]
+
+
+means.Ir76b <- ddply(melted$in_situ_ant_percent_Ir76b_Orco.csv, c("genotype"), summarise,
+                  mean=mean(value), sem=sd(value)/sqrt(length(value)))
+means.Ir76b$variable <- c("Ir76b", "Ir76b", "Ir76b")
+means.Ir76b <- means.Ir76b[,c("variable","genotype","mean","sem")]
+
+
+all.means <- rbind(means.Ir25a,means.Ir76b)
+all.means <- transform(all.means, lower = mean-sem, upper= mean+sem)
+
+means_GFP <- transform(all.means[all.means$genotype == "GFP_only", ],
+          ybegin = lower + all.means[all.means$genotype == "Both", "mean"] + all.means[all.means$genotype == "Orco_only", "mean"],
+          yend = upper + + all.means [all.means$genotype == "Both", "mean"] + all.means[all.means$genotype == "Orco_only", "mean"])
+
+means_Orco <- transform(all.means[all.means$genotype == "Orco_only", ],
+          ybegin = lower + all.means[all.means$genotype == "Both", "mean"],
+          yend = upper + all.means[all.means$genotype == "Both", "mean"])
+
+means_Both <- transform(all.means[all.means$genotype == "Both", ], ybegin = lower, yend = upper)
+
+allnew = rbind(means_GFP, means_Orco, means_Both)
+
+cols <- c(GFP_only = "seagreen3", Orco_only ="slateblue2" , Both = "tomato2")
+cols_greys <- c(GFP_only = "grey49", Orco_only = "grey78", Both = "mediumslateblue")
+
+ggplot(allnew, aes(fill = factor(genotype, levels = c("GFP_only", "Orco_only","Both")), 
+                                 x = variable, y = (mean))) + 
+  geom_bar(position = "stack", stat = "identity",
+           alpha = 0.8) +
+  geom_errorbar(data=allnew, aes(ymax=yend, ymin=ybegin),
+                width = 0.4) +
+  scale_fill_manual("cell type", values = cols_greys) +
+  theme(legend.position = "none") +
+  xlab("genotype") +
+  ylab("percent of cells per segment") +
+  theme_classic()
+
+  
+```
+
+
+**Palp in situ total cell counts**
+```{r palp_in_situ_total_cells, echo = FALSE, fig.width = 2, fig.height = 2}
+newlabs_Orco_Ir76b_Or8_total <- c("Orco", "Ir76b", "Or8")
+
+ggplot(subset(melted$in_situ_Orco_Or8_Ir76b_total.csv, genotype %in% c("Orco_only", "Ir76b_only", "Or8_only")), aes(x=genotype, y=(value))) +
+  geom_violin(aes(color = genotype, fill = genotype),
+              alpha = 0.2, 
+              width = 0.6,
+              scale = "width") +
+  geom_point(aes(color = genotype, shape = genotype, fill = genotype),
+             alpha = 1,
+             size = .5,
+             stroke = 1,
+             position = position_jitter(width = 0.1, height=0)) +
+  scale_shape_manual(values = c(21,21,21)) +
+  scale_color_manual(values = c("gray63", "chartreuse4", "tan1")) +
+  scale_fill_manual(values = c("gray63", "chartreuse4", "tan1")) +
+  scale_x_discrete(labels = newlabs_Orco_Ir76b_Or8_total) +
+  stat_summary(fun=mean, 
+               fun.min=mean, 
+               fun.max=mean, 
+               geom="crossbar", 
+               width=0.4,
+               size=.3) +
+  ylim(-1,75)+
+  ggtitle("palp in situ Orco, Ir76b, Or8") +
+  xlab("genotype") + ylab("cells per palp") + theme_classic() +
+  theme(plot.title = element_text(size = 10, hjust = 0.5)) +
+  theme(axis.text.x = element_text(angle = 45, hjust =1)) +
+  theme(legend.position = "none")
+
+
+ggplot(subset(melted$in_situ_Orco_Or8_Or49_total.csv, genotype %in% c("Orco", "Or8", "Or49")), aes(x=genotype, y=(value))) +
+  geom_violin(aes(color = genotype, fill = genotype),
+              alpha = 0.2, 
+              width = 0.6,
+              scale = "width") +
+  geom_point(aes(color = genotype, shape = genotype, fill = genotype),
+             alpha = 1,
+             size = .5,
+             stroke = 1,
+             position = position_jitter(width = 0.1, height=0)) +
+  scale_shape_manual(values = c(21,21,21)) +
+  scale_color_manual(values = c("gray63", "tan1", "plum")) +
+  scale_fill_manual(values = c("gray63", "tan1", "plum")) +
+  stat_summary(fun=mean, 
+               fun.min=mean, 
+               fun.max=mean, 
+               geom="crossbar", 
+               width=0.4,
+               size=.3) +
+  ylim(-1,75)+
+  ggtitle("palp in situ Orco, Or8, Or49") +
+  xlab("genotype") + ylab("cells per palp") + theme_classic() +
+  theme(plot.title = element_text(size = 10, hjust = 0.5)) +
+  theme(axis.text.x = element_text(angle = 45, hjust =1)) +
+  theme(legend.position = "none")
+
+
+ggplot(subset(melted$in_situ_Orco_Or49_Ir100a_total.csv, genotype %in% c("Orco", "Or49", "Ir100a")), aes(x=genotype, y=(value))) +
+  geom_violin(aes(color = genotype, fill = genotype),
+              alpha = 0.2, 
+              width = 0.6,
+              scale = "width") +
+  geom_point(aes(color = genotype, shape = genotype, fill = genotype),
+             alpha = 1,
+             size = .5,
+             stroke = 1,
+             position = position_jitter(width = 0.1, height=0)) +
+  scale_shape_manual(values = c(21,21,21)) +
+  scale_color_manual(values = c("gray63", "plum", "aquamarine3" )) +
+  scale_fill_manual(values = c("gray63", "plum", "aquamarine3")) +
+  stat_summary(fun=mean, 
+               fun.min=mean, 
+               fun.max=mean, 
+               geom="crossbar", 
+               width=0.4,
+               size=.3) +
+  ylim(-1,75)+
+  ggtitle("palp in situ Orco, Or49, Ir100a") +
+  xlab("genotype") + ylab("cells per palp") + theme_classic() +
+  theme(plot.title = element_text(size = 10, hjust = 0.5)) +
+  theme(axis.text.x = element_text(angle = 45, hjust =1)) +
+  theme(legend.position = "none")
+
+ggplot(subset(melted$in_situ_Orco_Or49_Ir93a_total.csv, genotype %in% c("Orco", "Or49", "Ir93a")), aes(x=genotype, y=(value))) +
+  geom_violin(aes(color = genotype, fill = genotype),
+              alpha = 0.2, 
+              width = 0.6,
+              scale = "width") +
+  geom_point(aes(color = genotype, shape = genotype, fill = genotype),
+             alpha = 1,
+             size = .5,
+             stroke = 1,
+             position = position_jitter(width = 0.1, height=0)) +
+  scale_shape_manual(values = c(21,21,21)) +
+  scale_color_manual(values = c("gray63", "plum", "aquamarine3" )) +
+  scale_fill_manual(values = c("gray63", "plum", "aquamarine3")) +
+  stat_summary(fun=mean, 
+               fun.min=mean, 
+               fun.max=mean, 
+               geom="crossbar", 
+               width=0.4,
+               size=.3) +
+  ylim(-1,75)+
+  ggtitle("palp in situ Orco, Or49, Ir93a") +
+  xlab("genotype") + ylab("cells per palp") + theme_classic() +
+  theme(plot.title = element_text(size = 10, hjust = 0.5)) +
+  theme(axis.text.x = element_text(angle = 45, hjust =1)) +
+  theme(legend.position = "none")
+
+
+  ggplot(subset(melted$in_situ_Orco_Ir25a_Gr3_total.csv, genotype %in% c("Orco", "Ir25a", "Gr3")), aes(x=genotype, y=(value))) +
+  geom_violin(aes(color = genotype, fill = genotype),
+              alpha = 0.2, 
+              width = 0.6,
+              scale = "width") +
+  geom_point(aes(color = genotype, shape = genotype, fill = genotype),
+             alpha = 1,
+             size = .5,
+             stroke = 1,
+             position = position_jitter(width = 0.1, height=0)) +
+  scale_shape_manual(values = c(21,21,21)) +
+  scale_color_manual(values = c("gray63", "firebrick3", "springgreen4" )) +
+  scale_fill_manual(values = c("gray63", "firebrick3", "springgreen4")) +
+  stat_summary(fun=mean, 
+               fun.min=mean, 
+               fun.max=mean, 
+               geom="crossbar", 
+               width=0.4,
+               size=.3) +
+  ylim(-1,75)+
+  ggtitle("palp in situ Orco, Ir25a, Gr3") +
+  xlab("genotype") + ylab("cells per palp") + theme_classic() +
+  theme(plot.title = element_text(size = 10, hjust = 0.5)) +
+  theme(axis.text.x = element_text(angle = 45, hjust =1)) +
+  theme(legend.position = "none")
+  
+  
+  ggplot(subset(melted$in_situ_Orco_Gr3_Ir75g_total.csv, genotype %in% c("Orco", "Gr3", "Ir75g")), aes(x=genotype, y=(value))) +
+  geom_violin(aes(color = genotype, fill = genotype),
+              alpha = 0.2, 
+              width = 0.6,
+              scale = "width") +
+  geom_point(aes(color = genotype, shape = genotype, fill = genotype),
+             alpha = 1,
+             size = .5,
+             stroke = 1,
+             position = position_jitter(width = 0.1, height=0)) +
+  scale_shape_manual(values = c(21,21,21)) +
+  scale_color_manual(values = c("gray63", "firebrick3", "springgreen4" )) +
+  scale_fill_manual(values = c("gray63", "firebrick3", "springgreen4")) +
+  stat_summary(fun=mean, 
+               fun.min=mean, 
+               fun.max=mean, 
+               geom="crossbar", 
+               width=0.4,
+               size=.3) +
+  ylim(-1,75)+
+  ggtitle("palp in situ Orco, Ir25a, Gr3") +
+  xlab("genotype") + ylab("cells per palp") + theme_classic() +
+  theme(plot.title = element_text(size = 10, hjust = 0.5)) +
+  theme(axis.text.x = element_text(angle = 45, hjust =1)) +
+  theme(legend.position = "none")
+```
+
+**Palp in situ Euler plots**
+
+```{r Orco_Or8_Ir76b, echo = FALSE, fig.width = 2}
+
+palp_Orco_Or8_Ir76b_euler <- euler(c("Orco" = 8.2,
+                                    "Ir76b" = 0.8,
+                                    "Or8" = 0,
+                                    "Orco&Ir76b" = 16,
+                                    "Ir76b&Or8" = 0,
+                                    "Orco&Or8" = 6.2,
+                                    "Orco&Or8&Ir76b" = 15.8,
+                                    "cell_1" = 1,
+                                    "cell_5" = 5),
+                                   quantities = TRUE)
+
+plot(palp_Orco_Or8_Ir76b_euler)
+
+palp_Orco_Or8_Or49_euler <- euler(c( "Or8" = 18.4,
+                                    "Or49" = 18,
+                                    "Or49&Or8" = 0,
+                                    "cell_1" = 1,
+                                    "cell_5" = 5),
+                                   quantities = TRUE)
+
+plot(palp_Orco_Or8_Or49_euler)
+
+
+palp_Orco_Or49_Ir100a_euler <- euler(c("Orco" = 20.8,
+                                       "Or49" = 0,
+                                       "Ir100a" = 0,
+                                       "Orco&Or49" = 21.6,
+                                       "Or49&Ir100a" = 0,
+                                       "Orco&Ir100a" = 0,
+                                       "Orco&Or49&Ir100a" = 3.4,                                    
+                                       "cell_1" = 1,
+                                    "cell_5" = 5),
+                                   quantities = TRUE)
+
+plot(palp_Orco_Or49_Ir100a_euler)
+
+
+palp_Orco_Or49_Ir93a_euler <- euler(c("Orco" = 18.4,
+                                       "Or49" = 0,
+                                       "Ir93a" = 0,
+                                       "Orco&Or49" = 19.8,
+                                       "Or49&Ir93a" = 0,
+                                       "Orco&Ir93a" = 0.4,
+                                       "Orco&Or49&Ir93a" = 11.6,
+                                      "cell_1" = 1,
+                                    "cell_5" = 5),
+                                   quantities = TRUE)
+
+plot(palp_Orco_Or49_Ir93a_euler)
+
+palp_Orco_Ir25a_Gr3_euler <- euler(c("Orco" = 38.2,
+                                     "Gr3" = 19,
+                                     "Orco&Gr3" = 0,
+                                     "cell_1" = 1,
+                                    "cell_5" = 5),
+                                   quantities = TRUE)
+
+plot(palp_Orco_Ir25a_Gr3_euler)
+
+palp_Orco_Gr3_Ir75g_euler <- euler(c("Orco" = 35.4,
+                                     "Gr3" = 7.8,
+                                     "Ir75g" = 0.4,
+                                     "Orco&Gr3" = 0,
+                                     "Gr3&Ir75g" = 13,
+                                     "Orco&Ir76g" = 0,
+                                     "Orco&Gr3&Ir75g" = 0,
+                                     "cell_1" = 1,
+                                    "cell_5" = 5),
+                                   quantities = TRUE)
+plot(palp_Orco_Gr3_Ir75g_euler)
+
+
+
+
+palp_Orco_Or49_Ir93a_euler_scale <- euler(c("Orco" = 18.4,
+                                       "Or49" = 0,
+                                       "Ir93a" = 0,
+                                       "Orco&Or49" = 19.8,
+                                       "Or49&Ir93a" = 0,
+                                       "Orco&Ir93a" = 0.4,
+                                       "Orco&Or49&Ir93a" = 11.6,
+                                       "cell_1" = 1,
+                                    "cell_5" = 5),
+                                   quantities = TRUE)
+
+plot(palp_Orco_Or49_Ir93a_euler_scale)
+
+```
+\
+\
+
+
