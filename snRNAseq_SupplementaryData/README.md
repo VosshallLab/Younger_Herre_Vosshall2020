@@ -1,10 +1,10 @@
 # snRNAseq Supplementary Data Table of Contents (& Where to Find Large Data Files)
-Updated January 3, 2022 - for questions, contact ogoldman@rockefeller.edu
+Updated January 3, 2022 - for questions, contact ogoldman@rockefeller.edu  
 
-All supplementary analysis is in the following repository:
-https://github.com/VosshallLab/Younger_Herre_Vosshall2020
-snRNAseq data files, scripts, and expression matricies are in a separate repository:
-https://github.com/VosshallLab/Younger_Herre_Vosshall2020_LFS
+All supplementary analysis is in the following repository:  
+https://github.com/VosshallLab/Younger_Herre_Vosshall2020  
+snRNAseq data files, scripts, and expression matricies are in a separate repository:  
+https://github.com/VosshallLab/Younger_Herre_Vosshall2020_LFS  
 
 | TISSUE         | LOCATION                               | DESCRIPTION                                                                             | DATA FILE NAME (located in   Younger_Herre_Vosshall2020_LFS/Data)         | SCRIPT FILE NAME (located in   Younger_Herre_Vosshall2020_LFS/Scripts) | GITHUB LINK (IF APPLICABLE)                                                                                                                          |
 |----------------|----------------------------------------|-----------------------------------------------------------------------------------------|---------------------------------------------------------------------------|------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------|
