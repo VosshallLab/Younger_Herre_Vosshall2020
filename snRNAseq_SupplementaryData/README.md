@@ -14,7 +14,7 @@ https://zenodo.org/record/5818952
 For raw sequencing files for both antenna and maxillary palp see NCBI/GEO number: **GSE192978**
 
 ## *Antenna: List of Data Items*
-| TISSUE 	| LOCATION 	| ITEM DESCRIPTION 	| DATA FILE NAME (all on [Zenodo](https://zenodo.org/record/5818543)) 	| SCRIPT FILE NAME (all on [Zenodo](https://zenodo.org/record/5818543)	|
+| TISSUE 	| LOCATION 	| ITEM DESCRIPTION 	| DATA FILE (all on [Zenodo](https://zenodo.org/record/5818543)) 	| SCRIPT FILE (all on [Zenodo](https://zenodo.org/record/5818543))	|
 |---	|---	|---	|---	|---	|
 | Antenna 	| Figure 5B 	| All Cells Marker Heatmap 	| antenna_6.neuralClusters.Rdata 	| antenna_7.expressedReceptors.R 	|
 | Antenna 	| Figure 5C 	| Neurons tSNE 	| antenna_6.neuralClusters.Rdata 	| antenna_7.expressedReceptors.R 	|
@@ -49,7 +49,7 @@ For raw sequencing files for both antenna and maxillary palp see NCBI/GEO number
 
 
 ## *Maxillary Palp: List of Data Items*
-| TISSUE 	| LOCATION 	| ITEM DESCRIPTION 	| DATA FILE NAME (all on [Zenodo](https://zenodo.org/record/5818952)) 	| SCRIPT FILE NAME (all on [Zenodo](https://zenodo.org/record/5818952)	|
+| TISSUE 	| LOCATION 	| ITEM DESCRIPTION 	| DATA FILE (all on [Zenodo](https://zenodo.org/record/5818952)) 	| SCRIPT FILE (all on [Zenodo](https://zenodo.org/record/5818952))	|
 |---	|---	|---	|---	|---	|
 | Maxillary Palp 	| Figure 7B 	| Cell Marker Heatmap  	| maxpalp_4.neuralClusters.RData 	| maxpalp_5.expressedReceptors.R 	|
 | Maxillary Palp 	| Figure 7C 	| tSNE 	| maxpalp_3.neuron.Rdata 	| maxpalp_3.check_receptor.R 	|
