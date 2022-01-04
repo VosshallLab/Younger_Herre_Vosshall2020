@@ -5,10 +5,10 @@ Updated January 3, 2022 - for questions, contact ogoldman@rockefeller.edu
 All supplementary analysis is in the following repository:
 https://github.com/VosshallLab/Younger_Herre_Vosshall2020
 
-Antenna snRNAseq data files, scripts, and expression matricies are on Zenodo:
+Antenna snRNAseq R data files, scripts, and expression matricies are on Zenodo:
 https://zenodo.org/record/5818543
 
-Maxillary Palp snRNAseq data files, scripts, and expression matricies are on Zenodo:
+Maxillary Palp snRNAseq R data files, scripts, and expression matricies are on Zenodo:
 https://zenodo.org/record/5818952
 
 For raw sequencing files for both antenna and maxillary palp see NCBI/GEO number: **GSE192978**
