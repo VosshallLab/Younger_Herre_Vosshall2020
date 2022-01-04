@@ -11,7 +11,7 @@ https://zenodo.org/record/5818543
 Maxillary Palp snRNAseq data files, scripts, and expression matricies are on Zenodo:
 https://zenodo.org/record/5818952
 
-For raw sequencing files for both antenna and maxillary palp see NCBI/GEO number: GSE192978
+For raw sequencing files for both antenna and maxillary palp see NCBI/GEO number: **GSE192978**
 
 ## *Antenna: List of Data Items*
 | TISSUE 	| LOCATION 	| ITEM DESCRIPTION 	| DATA FILE NAME (all on [Zenodo](https://zenodo.org/record/5818543)) 	| SCRIPT FILE NAME (all on [Zenodo](https://zenodo.org/record/5818543)	|
