@@ -2,8 +2,8 @@
 Updated January 3, 2022 - for questions, contact ogoldman@rockefeller.edu  
 
 ## Repositories
-All supplementary analysis is in the following repository:
-https://github.com/VosshallLab/Younger_Herre_Vosshall2020
+All supplementary snRNAseq analysis is in the following repository:
+https://github.com/VosshallLab/Younger_Herre_Vosshall2020/tree/main/snRNAseq_SupplementaryData
 
 Antenna snRNAseq R data files, scripts, and expression matricies are on Zenodo:
 https://zenodo.org/record/5818543
