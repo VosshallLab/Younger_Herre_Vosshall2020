@@ -38,16 +38,17 @@ For raw sequencing files for both antenna and maxillary palp [NCBI BioProject: P
 | Figure S5P 	| _Or84_+ cells heatmap 	| SeuratObject2_Antenna_mergedBatches_Neurons.rds 	| Antenna_Figures3_NeuronExampleHeatmaps.R 	|
 | Figure S6A 	| All neurons heatmap 	| SeuratObject2_Antenna_mergedBatches_Neurons.rds 	| Antenna_Figures3_NeuronExampleHeatmaps.R 	|
 | Figure S6A 	| Co-receptor violin plots 	| SeuratObject2_Antenna_mergedBatches_Neurons.rds 	| Antenna_Figures3_NeuronExampleHeatmaps.R 	|
-| Github 	| Chemosensor PseudoBulk Table	| SeuratObject2_Antenna_mergedBatches_Neurons.rds	| Antenna_Figures4_NeuronPseudobulk.R 	|
-| Github (Antenna_SuppData1_Heatmaps_ViolinPlots/10b) 	| Heatmaps (filtered by cluster) 	| SeuratObject2_Antenna_mergedBatches_Neurons.rds	| Antenna_SuppData1_Heatmaps.R 	|
+| [Github](https://github.com/VosshallLab/Younger_Herre_Vosshall2020/tree/main/snRNAseq_SupplementaryData/Antenna/Antenna_Figures4_NeuronPseudobulk_Output)  	| Chemosensor PseudoBulk Table	| SeuratObject2_Antenna_mergedBatches_Neurons.rds	| Antenna_Figures4_NeuronPseudobulk.R 	|
+| [Github](https://github.com/VosshallLab/Younger_Herre_Vosshall2020/tree/main/snRNAseq_SupplementaryData/Antenna/Antenna_SuppData1_Heatmaps_ViolinPlots/10b_byCluster_heatmaps_avggenelist_reclustered_res4) 	| Heatmaps (filtered by cluster) 	| SeuratObject2_Antenna_mergedBatches_Neurons.rds	| Antenna_SuppData1_Heatmaps.R 	|
 Antenna_SuppData1_Heatmaps.R 	|
-| Github (Antenna_SuppData1_Heatmaps_ViolinPlots/10c) 	 	| Violin Plots (on chemosensor-filtered populations) 	| SeuratObject2_Antenna_mergedBatches_Neurons.rds	| Antenna_SuppData1_Heatmaps.R 	|
-| Github (Antenna_SuppData1_Heatmaps_ViolinPlots/10d) 	 	| tSNE batch illustration (each cluster) 	| SeuratObject2_Antenna_mergedBatches_Neurons.rds	| Antenna_SuppData1_Heatmaps.R 	|
-| Github (Antenna_SuppData1_Heatmaps_ViolinPlots/11a) 	| Heatmaps (filtered by chemosensor expression) 	| SeuratObject2_Antenna_mergedBatches_Neurons.rds	| Antenna_SuppData1_Heatmaps.R 	|
-| Github (Antenna_SuppData1_Heatmaps_ViolinPlots/11b) 	 	| Violin Plots (for each chemosensor) 	| SeuratObject2_Antenna_mergedBatches_Neurons.rds	| 
-| Github (Antenna_SuppData2_FeaturePlots) 	 	| Feature Plots (for each chemosensor) 	| SeuratObject2_Antenna_mergedBatches_Neurons.rds	| Antenna_SuppData2_FeaturePlots.R 	|
-| Github (Antenna_receptorList.rds) 	 	| Extracted genes with at least one UMI in neuron population 	| SeuratObject2_Antenna_mergedBatches_Neurons.rds	| Antenna_SuppData1_Heatmaps.R 	|
-| Github (Antenna_SuppData3_PlotsOnAmbiguousNeuralClusters) 	 	| Further analysis on cluster removal 	| SeuratObject1_Antenna_mergedBatches_AllCells.rds	| Antenna_Pipeline.R 	|
+| [Github](https://github.com/VosshallLab/Younger_Herre_Vosshall2020/tree/main/snRNAseq_SupplementaryData/Antenna/Antenna_SuppData1_Heatmaps_ViolinPlots/10c_byCluster_violinplot_topgenes_reclustered_res4)	 	| Violin Plots (on chemosensor-filtered populations) 	| SeuratObject2_Antenna_mergedBatches_Neurons.rds	| Antenna_SuppData1_Heatmaps.R 	|
+| [Github](https://github.com/VosshallLab/Younger_Herre_Vosshall2020/tree/main/snRNAseq_SupplementaryData/Antenna/Antenna_SuppData1_Heatmaps_ViolinPlots/10d_byCluster_batchcheck_dimensionreduction) 	 	| tSNE batch illustration (each cluster) 	| SeuratObject2_Antenna_mergedBatches_Neurons.rds	| Antenna_SuppData1_Heatmaps.R 	|
+| [Github](https://github.com/VosshallLab/Younger_Herre_Vosshall2020/tree/main/snRNAseq_SupplementaryData/Antenna/Antenna_SuppData1_Heatmaps_ViolinPlots/11a_byGene_heatmaps)	| Heatmaps (filtered by chemosensor expression) 	| SeuratObject2_Antenna_mergedBatches_Neurons.rds	| Antenna_SuppData1_Heatmaps.R 	|
+| [Github](https://github.com/VosshallLab/Younger_Herre_Vosshall2020/tree/main/snRNAseq_SupplementaryData/Antenna/Antenna_SuppData1_Heatmaps_ViolinPlots/11b_byGene_violinplot) 	 	| Violin Plots (for each chemosensor) 	| SeuratObject2_Antenna_mergedBatches_Neurons.rds	| 
+| [Github](https://github.com/VosshallLab/Younger_Herre_Vosshall2020/tree/main/snRNAseq_SupplementaryData/Antenna/Antenna_SuppData2_FeaturePlots)	 	| Feature Plots (for each chemosensor) 	| SeuratObject2_Antenna_mergedBatches_Neurons.rds	| Antenna_SuppData2_FeaturePlots.R 	|
+| Github 	| Antenna_receptorList.rds (at least 1 UMI) 	| SeuratObject2_Antenna_mergedBatches_Neurons.rds	| Antenna_SuppData1_Heatmaps.R 	|
+| [Github](https://github.com/VosshallLab/Younger_Herre_Vosshall2020/tree/main/snRNAseq_SupplementaryData/Antenna/Antenna_SuppData3_PlotsOnAmbiguousNeuralClusters)	 	| Further analysis on cluster removal 	| SeuratObject1_Antenna_mergedBatches_AllCells.rds	| Antenna_Pipeline.R 	|
+
 
 
 
