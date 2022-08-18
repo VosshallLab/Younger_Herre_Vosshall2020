@@ -47,8 +47,8 @@ For raw sequencing files for both antenna and maxillary palp [NCBI BioProject: P
 | [Github link](https://github.com/VosshallLab/Younger_Herre_Vosshall2020/tree/main/snRNAseq_SupplementaryData/Antenna) 	| Antenna_receptorList.rds (at least 1 UMI) 	| SeuratObject2_Antenna_mergedBatches_Neurons.rds	| Antenna_SuppData1_Heatmaps.R 	|
 | [Github link](https://github.com/VosshallLab/Younger_Herre_Vosshall2020/tree/main/snRNAseq_SupplementaryData/Antenna/Antenna_SuppData3_PlotsOnAmbiguousNeuralClusters)	 	| Further analysis on cluster removal 	| SeuratObject1_Antenna_mergedBatches_AllCells.rds	| Antenna_Pipeline.R 	|
 | [Zenodo](https://doi.org/10.5281/zenodo.5818542) 	| Cellranger matrices, DecontX matrices	| cellranger_and_decontX_outputs.zip 	| Antenna_Pipeline.R 	|
-| [Zenodo](https://doi.org/10.5281/zenodo.5818542) 	| Seurat Object: All Maxillary Palp Cells 	| SeuratObject1_Antenna_mergedBatches_AllCells.rds 	| Antenna_Pipeline.R 	|
-| [Zenodo](https://doi.org/10.5281/zenodo.5818542) 	| Seurat Object: All Maxillary Palp Neurons 	| SeuratObject2_Antenna_mergedBatches_Neurons.rds	| Antenna_Pipeline.R 	|
+| [Zenodo](https://doi.org/10.5281/zenodo.5818542) 	| Seurat Object: All Antenna Cells 	| SeuratObject1_Antenna_mergedBatches_AllCells.rds 	| Antenna_Pipeline.R 	|
+| [Zenodo](https://doi.org/10.5281/zenodo.5818542) 	| Seurat Object: All Antenna Neurons 	| SeuratObject2_Antenna_mergedBatches_Neurons.rds	| Antenna_Pipeline.R 	|
 
 
 
