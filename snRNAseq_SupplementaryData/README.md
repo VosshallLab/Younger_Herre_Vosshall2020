@@ -16,11 +16,11 @@ For raw sequencing files for both antenna and maxillary palp [NCBI BioProject: P
 ## *Antenna: List of Data Items*
 | LOCATION 	| ITEM DESCRIPTION 	| DATA FILE (all on [Zenodo](https://doi.org/10.5281/zenodo.5818542)) 	| SCRIPT USED TO GENERATE (all on [Github](https://github.com/VosshallLab/Younger_Herre_Vosshall2020/tree/main/snRNAseq_SupplementaryData/Antenna)) 	|
 |---	|---	|---	|---	|
-| Fig 5B 	| All Cells Marker Heatmap 	| SeuratObject1_Antenna_mergedBatches_AllCells.rds 	| Antenna_Figures2_AllCells.R 	|
-| Fig 5C 	| Neurons tSNE 	| SeuratObject2_Antenna_mergedBatches_Neurons.rds 	| Antenna_Figures1_Neurons.R 	|
-| Fig 5D 	| Chemosensor Dot plot 	| SeuratObject2_Antenna_mergedBatches_Neurons.rds 	| Antenna_Figures1_Neurons.R 	|
-| Fig 5E 	| Chord Plot (SCT values)	| SeuratObject2_Antenna_mergedBatches_Neurons.rds 	| Antenna_Figures1_Neurons.R 	|
-| Fig 5F 	| _Or82_+ cells heatmap 	| SeuratObject2_Antenna_mergedBatches_Neurons.rds 	| Antenna_Figures3_NeuronExampleHeatmaps.R 	|
+| Fig 4B 	| All Cells Marker Heatmap 	| SeuratObject1_Antenna_mergedBatches_AllCells.rds 	| Antenna_Figures2_AllCells.R 	|
+| Fig 4C 	| Neurons tSNE 	| SeuratObject2_Antenna_mergedBatches_Neurons.rds 	| Antenna_Figures1_Neurons.R 	|
+| Fig 4D 	| Chemosensor Dot plot 	| SeuratObject2_Antenna_mergedBatches_Neurons.rds 	| Antenna_Figures1_Neurons.R 	|
+| Fig 4E 	| Chord Plot (SCT values)	| SeuratObject2_Antenna_mergedBatches_Neurons.rds 	| Antenna_Figures1_Neurons.R 	|
+| Fig 4F 	| _Or82_+ cells heatmap 	| SeuratObject2_Antenna_mergedBatches_Neurons.rds 	| Antenna_Figures3_NeuronExampleHeatmaps.R 	|
 | Fig S5A 	| Orco Feature Plot (DecontX illustration) 	| cellranger_and_decontX_outputs 	| Antenna_Figures2_AllCells.R 	|
 | Fig S5B 	| Batch Correction Feature Plot 	| SeuratObject1_Antenna_mergedBatches_AllCells.rds 	| Antenna_Pipeline.R 	|
 | Fig S5C-E 	| Genes, UMIs, Mitochondrial Genes Violin Plots 	| SeuratObject1_Antenna_mergedBatches_AllCells.rds 	| Antenna_Figures2_AllCells.R 	|
